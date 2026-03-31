@@ -1,1 +1,19 @@
-<app-product-list></app-product-list>
+<h1>
+    Angular Store
+</h1>
+
+<nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+    <a routerLink="/products" routerLinkActive="active">Products</a>
+    <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    <a routerLink="/admin" routerLinkActive="active">Admin</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer>
+    <hr />
+    <p>
+        &copy; 2024 Angular.
+    </p>
+</footer>

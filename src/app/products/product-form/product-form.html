@@ -1,0 +1,52 @@
+<h2>Create New Product</h2>
+<form [formRoot]="productForm">
+    <label for="name">Name:</label>
+    <input id="name" type="text" [formField]="productForm.name">
+    <br />
+
+    <label for="price">Price:</label>
+    <input id="price" type="number" [formField]="productForm.price">
+    <br />
+
+    <label for="description">Description:</label>
+    <textarea id="description" [formField]="productForm.description">
+    </textarea>
+    <br />
+
+    <label for="imageUrl">Image url:</label>
+    <input id="imageUrl" type="text" placeholder="http://" [formField]="productForm.imageUrl">
+    <br />
+
+    <label for="discontinued">Discontinued?</label>
+    <input id="discontinued" type="checkbox" [formField]="productForm.discontinued">
+    <br />
+
+    <label for="fixedPrice">Fixed price?</label>
+    <input id="fixedPrice" type="checkbox" [formField]="productForm.fixedPrice">
+    <br />
+
+    <button type="submit" [disabled]="productForm().invalid() || productForm().submitting()">
+        @if (productForm().submitting()) {
+        Saving ...
+        } @else {
+        Save
+        }
+    </button>
+
+    @if (productForm().dirty() && productForm().invalid()) {
+          <p class="errorMessage"><b>
+            @if (productForm().errorSummary().length > 1) {
+            Please fix those errors:
+            } @else {
+            Please fix this error:
+            }
+          </b></p>
+
+    <ul class="errorMessage">
+        @for (error of productForm().errorSummary(); track $index) {
+        <li>{{ error.message }}</li>
+        }
+    </ul>
+    }
+
+</form>

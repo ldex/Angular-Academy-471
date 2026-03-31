@@ -15,4 +15,16 @@ export class ApiService {
     return this.http.get<Product[]>(this.baseUrl).pipe(delay(1500));
   }
 
+  loadProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(this.baseUrl + id);
+  }
+
+  createProduct(product: Omit<Product, 'id'>): Observable<Product> {
+    return this.http.post<Product>(this.baseUrl, product);
+  }
+
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(this.baseUrl + id);
+  }
+
 }

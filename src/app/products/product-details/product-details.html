@@ -14,6 +14,18 @@
         <p>Discontinued? {{product.discontinued}}</p>
         <p>Modified date:
             {{product.modifiedDate | date}}</p>
+
+        <button (click)="confirm.showModal()">Delete Product</button>
+
+        <dialog #confirm>
+          <p>Delete this product ?</p>
+          <div class="right">
+            <button (click)="deleteProduct()" autofocus>Ok</button>
+            &nbsp;
+            <button (click)="confirm.close()">Cancel</button>
+          </div>
+        </dialog>
+
     </div>
 } @else {
     <h3>No product to display!</h3>
