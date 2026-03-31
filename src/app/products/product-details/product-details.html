@@ -1,0 +1,20 @@
+<h2>
+    Selected product
+</h2>
+
+@if (product(); as product) {
+    <div>
+        <h3>{{product.name | uppercase}}</h3>
+        @if (product.imageUrl) {
+            <img style="float:right" [src]="product.imageUrl" width="250" />
+        }
+        <h4>{{product.description}}</h4>
+        <p>Price: {{product.price | currency:'CAD':'symbol-narrow':'.2'}}</p>
+        <p>Fixed price? {{product.fixedPrice}}</p>
+        <p>Discontinued? {{product.discontinued}}</p>
+        <p>Modified date:
+            {{product.modifiedDate | date}}</p>
+    </div>
+} @else {
+    <h3>No product to display!</h3>
+}
